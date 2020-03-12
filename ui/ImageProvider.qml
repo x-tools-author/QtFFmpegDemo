@@ -1,6 +1,6 @@
 ﻿import QtQuick          2.12
 import QtQuick.Window   2.12
-import CustomType       1.0
+
 Rectangle {
     visible: true
     width: 640
@@ -19,7 +19,7 @@ Rectangle {
         repeat: true
         onTriggered: {
             videoFrame.source = ""
-            videoFrame.source = "image://videoprovider/" + Math.random()
+            videoFrame.source = "image://videoprovider/"
         }
     }
 }

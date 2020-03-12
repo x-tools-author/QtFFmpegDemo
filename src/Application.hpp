@@ -18,8 +18,6 @@ private:
     QQmlApplicationEngine engine;
     ImageProvider *imageProvider;
     Decoder *decoder;
-private:
-    void registerCustomType();
 };
 
 #endif // APPLICATION_HPP
