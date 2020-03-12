@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/Hi3516A_1080P30fps_800kbps_0626.h265</file>
+        <file>ui/main.qml</file>
+    </qresource>
+</RCC>
