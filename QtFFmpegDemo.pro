@@ -21,10 +21,14 @@ INCLUDEPATH += \
 
 HEADERS += \
         src/Application.hpp \
+        src/ImageProvider.hpp \
+        src/QuickPaintedItem.hpp \
         src/decoder/Decoder.hpp
 
 SOURCES += \
         src/Application.cpp \
+        src/ImageProvider.cpp \
+        src/QuickPaintedItem.cpp \
         src/decoder/Decoder.cpp \
         src/main.cpp
 

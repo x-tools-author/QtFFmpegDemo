@@ -4,5 +4,6 @@
         <file>ui/main.qml</file>
         <file>ui/ImageProvider.qml</file>
         <file>ui/QuickPaintedItem.qml</file>
+        <file>resources/F.png</file>
     </qresource>
 </RCC>
