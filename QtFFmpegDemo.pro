@@ -47,3 +47,8 @@ MOC_DIR = $${OUT_PWD}/moc
 OBJECTS_DIR = $${OUT_PWD}/obj
 UI_DIR = $${OUT_PWD}/ui
 RCC_DIR = $${OUT_PWD}/rc
+
+msvc:{
+    QMAKE_CXXFLAGS += -execution-charset:utf-8
+    RC_ICONS = Windows.ico
+}
