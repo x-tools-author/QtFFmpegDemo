@@ -4,6 +4,7 @@
 #include "Decoder.hpp"
 #include "Application.hpp"
 #include "ImageProvider.hpp"
+#include "QuickPaintedItem.hpp"
 
 Application::Application(int argc, char **argv)
     : QGuiApplication(argc, argv)
@@ -22,6 +23,8 @@ Application::Application(int argc, char **argv)
 
     engine.addImageProvider(QString("videoprovider"), imageProvider);
     decoder->start();
+
+    qmlRegisterType<QuickPaintedItem>("CustomType", 1, 0, "QuickPaintedItem");
 }
 
 Application::~Application()
@@ -29,6 +32,11 @@ Application::~Application()
     if (decoder){
         decoder->requestInterruption();
     }
+}
+
+Decoder *Application::decoderInstance()
+{
+    return decoder;
 }
 
 void Application::setupUi()

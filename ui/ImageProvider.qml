@@ -11,6 +11,7 @@ Rectangle {
         fillMode: Image.PreserveAspectFit
         source: "qrc:/resources/F.png"
         cache: false
+        anchors.centerIn: parent
     }
 
     Timer {

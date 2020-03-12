@@ -13,6 +13,7 @@ public:
     explicit Application(int argc, char **argv);
     ~Application();
 
+    Decoder *decoderInstance();
     void setupUi();
 private:
     QQmlApplicationEngine engine;
