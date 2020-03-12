@@ -5,6 +5,7 @@
 #include <QQmlApplicationEngine>
 
 class Decoder;
+class ImageProvider;
 class Application : public QGuiApplication
 {
     Q_OBJECT
@@ -15,9 +16,10 @@ public:
     void setupUi();
 private:
     QQmlApplicationEngine engine;
+    ImageProvider *imageProvider;
     Decoder *decoder;
-signals:
-
+private:
+    void registerCustomType();
 };
 
 #endif // APPLICATION_HPP

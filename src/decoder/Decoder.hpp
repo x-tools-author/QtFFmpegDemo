@@ -47,7 +47,7 @@ private:
     void outputImage(AVCodecContext *avctx, AVFrame *frame);
     void saveImageToList(uint8_t *data, int width, int height, QImage::Format format);
 signals:
-
+    void imageChanged(QImage image);
 };
 
 #endif // DECODER_HPP

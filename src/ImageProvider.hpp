@@ -1,22 +1,16 @@
-﻿/**************************************************************************
- * The file is encoding with utf-8 (with BOM).
- * The file is part of "4g link data transmit tool" project.
- *
- * Copyright (C), 2018-2019. 广州雷迅创新科技有限公司，all rights reserve.
- *************************************************************************/
-#ifndef TTVIDEOIMAGEPROVIDER_H
-#define TTVIDEOIMAGEPROVIDER_H
+﻿#ifndef IMAGEPROVIDER_H
+#define IMAGEPROVIDER_H
 
-#include <QQuickImageProvider>
 #include <QImage>
+#include <QQuickImageProvider>
 
-class VideoImageProvider:public QQuickImageProvider
+class ImageProvider:public QQuickImageProvider
 {
 public:
-    VideoImageProvider(ImageType type = QQmlImageProviderBase::Image);
+    ImageProvider(ImageType type = QQmlImageProviderBase::Image);
     QImage requestImage(const QString &id, QSize *size, const QSize &requestedSize);
 
-    void setImage(QImage iamge){_image = iamge;}
+    void setImage(QImage image){_image = image;}
 private:
     QImage _image;
 };

@@ -4,19 +4,15 @@
  *
  * Copyright (C), 2018-2019. 广州雷迅创新科技有限公司，all rights reserve.
  *************************************************************************/
-#ifdef _MSC_VER
-#pragma execution_character_set("utf-8")
-#endif
+#include "ImageProvider.hpp"
 
-#include "VideoImageProvider.hpp"
-
-VideoImageProvider::VideoImageProvider(ImageType type)
+ImageProvider::ImageProvider(ImageType type)
     :QQuickImageProvider (type)
 {
-    _image = QImage(":/images/NoVideo.png");
+    _image = QImage(":/resources/F.png");
 }
 
-QImage VideoImageProvider::requestImage(const QString &id, QSize *size, const QSize &requestedSize)
+QImage ImageProvider::requestImage(const QString &id, QSize *size, const QSize &requestedSize)
 {
     Q_UNUSED(id);
     Q_UNUSED(requestedSize);

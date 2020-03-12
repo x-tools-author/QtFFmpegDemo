@@ -197,6 +197,7 @@ void Decoder::run()
 
     /* actual decoding and dump the raw data */
     while (ret >= 0) {
+        quint64 t1 = QDateTime::currentDateTime().toMSecsSinceEpoch();
         if (isInterruptionRequested()){
             break;
         }
@@ -210,6 +211,10 @@ void Decoder::run()
         }
 
         av_packet_unref(&packet);
+        quint64 t2 = QDateTime::currentDateTime().toMSecsSinceEpoch();
+        if ((t2 - t1) < (1000/30)){
+            msleep(t2 - t1);
+        }
     }
 
     /* flush the decoder */
@@ -271,10 +276,17 @@ void Decoder::outputImage(AVCodecContext *avctx, AVFrame *frame)
     /// @brief 格式转换，生成图像
     ret = sws_scale(swsContext, frame->data, frame->linesize, 0, avctx->height, rgbData, rgbLinesize);
     if (ret > 0) {
+#if 0
         saveImageToList(rgbData[0], avctx->width, avctx->height, QImage::Format_RGB32);
+#else
+        QImage *image = new QImage(QSize(avctx->width, avctx->height), QImage::Format_RGB32);
+        memcpy(image->bits(), rgbData[0], static_cast<size_t>(image->sizeInBytes()));
+        emit imageChanged(*image);
+        delete image;
+#endif
     }
 
-    // 内存释放
+    /// @brief 内存释放
     sws_freeContext(swsContext);
 }
 
