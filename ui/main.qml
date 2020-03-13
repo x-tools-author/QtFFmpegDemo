@@ -14,7 +14,7 @@ ApplicationWindow {
             id: loadMenu
             title: qsTr("Renderer")
             Repeater {
-                model: [qsTr("ImageProvider"), qsTr("QuickPaintedItem"), qsTr("VideoOutput"), qsTr("Close")]
+                model: ["ImageProvider", "QuickPaintedItem", "VideoOutput", qsTr("Close")]
                 MenuItem {
                     text: modelData
                     onClicked: {
