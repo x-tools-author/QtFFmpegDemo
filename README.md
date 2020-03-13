@@ -1,0 +1,15 @@
+# Just A Demo
+
+The project is a simple demo of that using Qt to rendering ffmpeg-video-frame.
+
+## Rendering Ways
+
+* QQuickPaintedItem
+* QQuickImageProvider
+* VideoOutput
+
+## Developer Environment
+
+Platform | Qt Version | Compiler
+-|-|-|
+Windows | 5.12 | msvc2017/msvc2017_64
