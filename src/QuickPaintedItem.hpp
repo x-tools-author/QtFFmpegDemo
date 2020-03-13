@@ -1,5 +1,5 @@
-﻿#ifndef TTVIDEOIMAGEPROVIDER_H
-#define TTVIDEOIMAGEPROVIDER_H
+﻿#ifndef QUICKPAINTEDITEM_HH
+#define QUICKPAINTEDITEM_HH
 
 #include <QQuickPaintedItem>
 #include <QImage>
