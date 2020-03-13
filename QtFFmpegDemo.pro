@@ -1,4 +1,4 @@
-QT += quick
+QT += quick multimedia
 
 CONFIG += c++11
 
@@ -23,12 +23,14 @@ HEADERS += \
         src/Application.hpp \
         src/ImageProvider.hpp \
         src/QuickPaintedItem.hpp \
+        src/VideoOutputSource.hpp \
         src/decoder/Decoder.hpp
 
 SOURCES += \
         src/Application.cpp \
         src/ImageProvider.cpp \
         src/QuickPaintedItem.cpp \
+        src/VideoOutputSource.cpp \
         src/decoder/Decoder.cpp \
         src/main.cpp
 
