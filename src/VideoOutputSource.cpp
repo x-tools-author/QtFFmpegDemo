@@ -15,8 +15,10 @@ VideoOutputSource::VideoOutputSource(QObject *parent)
     Decoder *decoder = reinterpret_cast<Application*>(qApp)->decoderInstance();
     if (decoder){
         connect(decoder, &Decoder::imageChanged, this, [&](QImage image){
+            if (!_videoSurface->isActive()){
+                _videoSurface->start(QVideoSurfaceFormat(QSize(image.width(), image.height()), QVideoFrame::Format_BGRA32));
+            }
             _videoSurface->present(QVideoFrame(image));
-            _videoSurface->start(QVideoSurfaceFormat(QSize(image.width(), image.height()), QVideoFrame::Format_BGRA32));
         });
     }
 }
