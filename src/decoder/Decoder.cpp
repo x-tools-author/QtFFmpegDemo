@@ -155,7 +155,6 @@ void Decoder::run()
     }
     video_stream = ret;
 
-
     for (i = 0; ; i++) {
         const AVCodecHWConfig *config = avcodec_get_hw_config(decoder, i);
         if (!config) {
@@ -180,7 +179,6 @@ void Decoder::run()
         qWarning() << "Parameters to context failed";
         return;
     }
-
 
     decoder_ctx->get_format  = get_hw_format;
     av_opt_set_int(decoder_ctx, "refcounted_frames", 1, 0);
