@@ -135,11 +135,11 @@ void Decoder::run()
     }
 
     /* open the input file */
-    if (avformat_open_input(&input_ctx, QCoreApplication::applicationDirPath().append("/Hi3516A_1080P30fps_800kbps_0626.h265").toLatin1().data(), NULL, NULL) != 0) {
-        fprintf(stderr, "Cannot open input file '%s'\n", QCoreApplication::applicationDirPath().append("/Hi3516A_1080P30fps_800kbps_0626.h265").toLatin1().data());
+    if (avformat_open_input(&input_ctx, QCoreApplication::applicationDirPath().append("/Hi3516A_1080P30fps_300kbps_0626.h265").toLatin1().data(), NULL, NULL) != 0) {
+        fprintf(stderr, "Cannot open input file '%s'\n", QCoreApplication::applicationDirPath().append("/Hi3516A_1080P30fps_300kbps_0626.h265").toLatin1().data());
         return;
     }else{
-        qInfo() << __FUNCTION__ << __LINE__ << QCoreApplication::applicationDirPath().append("/Hi3516A_1080P30fps_800kbps_0626.h265").toLatin1().data();
+        qInfo() << __FUNCTION__ << __LINE__ << QCoreApplication::applicationDirPath().append("/Hi3516A_1080P30fps_300kbps_0626.h265").toLatin1().data();
     }
 
     if (avformat_find_stream_info(input_ctx, NULL) < 0) {

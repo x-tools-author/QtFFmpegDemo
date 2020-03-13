@@ -48,7 +48,7 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-QMAKE_POST_LINK += $$escape_expand(\\n) $${QMAKE_COPY} \"$${PWD}\\resources\\Hi3516A_1080P30fps_800kbps_0626.h265\" \"$${FFMPEG_TARGET_PATH}\" $$escape_expand(\\n)
+QMAKE_POST_LINK += $$escape_expand(\\n) $${QMAKE_COPY} \"$${PWD}\\resources\\Hi3516A_1080P30fps_300kbps_0626.h265\" \"$${FFMPEG_TARGET_PATH}\" $$escape_expand(\\n)
 
 MOC_DIR = $${OUT_PWD}/moc
 OBJECTS_DIR = $${OUT_PWD}/obj
