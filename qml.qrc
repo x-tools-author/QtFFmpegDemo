@@ -5,5 +5,6 @@
         <file>ui/ImageProvider.qml</file>
         <file>ui/QuickPaintedItem.qml</file>
         <file>resources/F.png</file>
+        <file>ui/CustomVideoOutput.qml</file>
     </qresource>
 </RCC>
