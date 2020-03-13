@@ -10,9 +10,9 @@ The project is a simple demo of that using Qt to rendering ffmpeg-video-frame.
 
 ## Developer Environment
 
-Platform | Qt Version | Compiler
--|-|-|
-Windows | 5.12 | msvc2017/msvc2017_64
+Platform | Qt Version | FFmpeg Version | Compiler
+-|-|-|-|
+Windows | 5.12 | 4.0.2 | msvc2017/msvc2017_64
 
 ## Have A Look
 
