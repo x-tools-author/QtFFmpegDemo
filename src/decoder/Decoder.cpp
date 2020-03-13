@@ -35,7 +35,7 @@ static enum AVPixelFormat get_hw_format(AVCodecContext *ctx, const enum AVPixelF
     return AV_PIX_FMT_NONE;
 }
 
-int Decoder::decode_write(AVCodecContext *avctx, AVPacket *packet)
+int Decoder::decodeActually(AVCodecContext *avctx, AVPacket *packet)
 {
     AVFrame *frame = NULL, *sw_frame = NULL;
     AVFrame *tmp_frame = NULL;
@@ -207,7 +207,7 @@ void Decoder::run()
         }
 
         if (video_stream == packet.stream_index){
-            ret = decode_write(decoder_ctx, &packet);
+            ret = decodeActually(decoder_ctx, &packet);
         }
 
         av_packet_unref(&packet);
@@ -220,7 +220,7 @@ void Decoder::run()
     /* flush the decoder */
     packet.data = NULL;
     packet.size = 0;
-    ret = decode_write(decoder_ctx, &packet);
+    ret = decodeActually(decoder_ctx, &packet);
     av_packet_unref(&packet);
 
     avcodec_free_context(&decoder_ctx);

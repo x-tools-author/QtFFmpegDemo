@@ -23,27 +23,13 @@ public:
 protected:
     void run();
 private:
-    /**
-     * 当前解码输出宽度
-     */
+    /// @brief 解码相关参数
     int rgbWidth = 0;
-
-    /**
-     * 当前解码输出高度
-     */
     int rgbHeight = 0;
-
-    /**
-     * rgb数据存储地址
-     */
     uint8_t* rgbData[4];
-
-    /**
-     * 并不知道这个是什么,参考了ffmpeg 官方实例
-     */
     int rgbLinesize[4];
 private:
-    int decode_write(AVCodecContext *avctx, AVPacket *packet);
+    int decodeActually(AVCodecContext *avctx, AVPacket *packet);
     void outputImage(AVCodecContext *avctx, AVFrame *frame);
     void saveImageToList(uint8_t *data, int width, int height, QImage::Format format);
 signals:
