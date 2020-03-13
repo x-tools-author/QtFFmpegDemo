@@ -38,10 +38,5 @@ Decoder *Application::decoderInstance()
 void Application::setupUi()
 {
     const QUrl url(QStringLiteral("qrc:/ui/main.qml"));
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     this, [url](QObject *obj, const QUrl &objUrl) {
-        if (!obj && url == objUrl)
-            QCoreApplication::exit(-1);
-    }, Qt::QueuedConnection);
     engine.load(url);
 }
