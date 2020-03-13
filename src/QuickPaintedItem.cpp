@@ -10,7 +10,9 @@ QuickPaintedItem::QuickPaintedItem(QQuickItem *parent)
 {
     QQmlEngine::setObjectOwnership(this, QQmlEngine::JavaScriptOwnership);
     Decoder *decoder = reinterpret_cast<Application*>(qApp)->decoderInstance();
-    connect(decoder, &Decoder::imageChanged, this, &QuickPaintedItem::setImage);
+    if (decoder){
+        connect(decoder, &Decoder::imageChanged, this, &QuickPaintedItem::setImage);
+    }
 }
 
 void QuickPaintedItem::paint(QPainter *painter)

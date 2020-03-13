@@ -5,6 +5,7 @@
 #include "Application.hpp"
 #include "ImageProvider.hpp"
 #include "QuickPaintedItem.hpp"
+#include "VideoOutputSource.hpp"
 
 Application::Application(int argc, char **argv)
     : QGuiApplication(argc, argv)
@@ -25,6 +26,7 @@ Application::Application(int argc, char **argv)
     decoder->start();
 
     qmlRegisterType<QuickPaintedItem>("CustomType", 1, 0, "QuickPaintedItem");
+    qmlRegisterType<VideoOutputSource>("CustomType", 1, 0, "VideoOutputSource");
 }
 
 Application::~Application()

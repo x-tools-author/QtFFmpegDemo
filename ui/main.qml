@@ -14,11 +14,18 @@ ApplicationWindow {
             id: loadMenu
             title: qsTr("显示方式")
             Repeater {
-                model: [qsTr("ImageProvider"), qsTr("QuickPaintedItem")]
+                model: [qsTr("ImageProvider"), qsTr("QuickPaintedItem"), qsTr("VideoOutput")]
                 MenuItem {
                     text: modelData
                     onClicked: {
-                        windowContentLoader.source = (index == 0) ? "qrc:/ui/ImageProvider.qml" : "qrc:/ui/QuickPaintedItem.qml"
+                        if (index == 0){
+                            windowContentLoader.source = "qrc:/ui/ImageProvider.qml"
+                        }else if (index == 1){
+                            windowContentLoader.source = "qrc:/ui/QuickPaintedItem.qml"
+                        }else if (index == 2){
+                            windowContentLoader.source = "qrc:/ui/CustomVideoOutput.qml"
+                        }
+
                         root.title = modelData
                     }
                 }

@@ -1,40 +1,36 @@
-﻿#include <QPainter>
+﻿#include <QDebug>
 #include <QQmlEngine>
+#include <QVideoSurfaceFormat>
 
 #include "Decoder.hpp"
 #include "Application.hpp"
-#include "QuickPaintedItem.hpp"
+#include "VideoOutputSource.hpp"
 
-QuickPaintedItem::QuickPaintedItem(QQuickItem *parent)
-    : QQuickPaintedItem(parent)
+VideoOutputSource::VideoOutputSource(QObject *parent)
+    : QObject(parent)
+    , _videoSurface(Q_NULLPTR)
 {
     QQmlEngine::setObjectOwnership(this, QQmlEngine::JavaScriptOwnership);
+
     Decoder *decoder = reinterpret_cast<Application*>(qApp)->decoderInstance();
-    connect(decoder, &Decoder::imageChanged, this, &QuickPaintedItem::setImage);
+    if (decoder){
+        connect(decoder, &Decoder::imageChanged, this, [&](QImage image){
+            _videoSurface->present(QVideoFrame(image));
+            _videoSurface->start(QVideoSurfaceFormat(QSize(image.width(), image.height()), QVideoFrame::Format_BGRA32));
+        });
+    }
 }
 
-void QuickPaintedItem::paint(QPainter *painter)
+QAbstractVideoSurface* VideoOutputSource::videoSurface()
 {
-    if (videoFrame.isNull()){
-        return;
-    }
-
-    /// @brief 等比例缩放绘制
-    QPixmap pixmap = QPixmap::fromImage(videoFrame);
-    if (this->width() > this->height()){
-        pixmap = pixmap.scaledToHeight(static_cast<int>(height()));
-    }else {
-        pixmap = pixmap.scaledToWidth(static_cast<int>(width()));
-    }
-    painter->drawPixmap(QRect(static_cast<int>((width()-pixmap.width())/2),
-                              static_cast<int>((height()-pixmap.height())/2),
-                              pixmap.width(),
-                              pixmap.height()),
-                        QPixmap::fromImage(videoFrame));
+    return _videoSurface;
 }
 
-void QuickPaintedItem::setImage(QImage image)
+void VideoOutputSource::setVideoSurface(QAbstractVideoSurface *surface)
 {
-    videoFrame = image;
-    update();
+    QAbstractVideoSurface *old = _videoSurface;
+    _videoSurface = surface;
+    if (old != _videoSurface){
+        emit videoSurfaceChanged();
+    }
 }

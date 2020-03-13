@@ -1,18 +1,21 @@
-﻿#ifndef TTVIDEOIMAGEPROVIDER_H
-#define TTVIDEOIMAGEPROVIDER_H
+﻿#ifndef VIDEOOUTPUTSOURCE_HH
+#define VIDEOOUTPUTSOURCE_HH
 
-#include <QQuickPaintedItem>
-#include <QImage>
+#include <QObject>
+#include <QAbstractVideoSurface>
 
-class QuickPaintedItem:public QQuickPaintedItem
+class VideoOutputSource : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QAbstractVideoSurface *videoSurface READ videoSurface WRITE setVideoSurface NOTIFY videoSurfaceChanged)
 public:
-    QuickPaintedItem(QQuickItem *parent = nullptr);
-    void paint(QPainter *painter) override;
-    void setImage(QImage image);
+    VideoOutputSource(QObject *parent = Q_NULLPTR);
 private:
-    QImage videoFrame;
+    QAbstractVideoSurface *_videoSurface;
+    QAbstractVideoSurface *videoSurface();
+    void setVideoSurface(QAbstractVideoSurface* surface);
+signals:
+    void videoSurfaceChanged();
 };
 
 #endif
