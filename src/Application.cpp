@@ -11,18 +11,12 @@ Application::Application(int argc, char **argv)
     : QGuiApplication(argc, argv)
 {
     decoder = new Decoder;
-    imageProvider = new ImageProvider;
-
     connect(decoder, &Decoder::finished, this, [&](){
         decoder->deleteLater();
         decoder = nullptr;
     });
 
-    connect(decoder, &Decoder::imageChanged, this, [&](QImage img){
-        imageProvider->setImage(img);
-    });
-
-    engine.addImageProvider(QString("videoprovider"), imageProvider);
+    engine.addImageProvider(QString("videoprovider"), new ImageProvider);
     decoder->start();
 
     qmlRegisterType<QuickPaintedItem>("CustomType", 1, 0, "QuickPaintedItem");
