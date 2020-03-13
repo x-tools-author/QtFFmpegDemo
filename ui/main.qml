@@ -7,14 +7,14 @@ ApplicationWindow {
     visible: true
     width: 640
     height: 480
-    title: qsTr("ImageProvider")
+    title: "Current Rendering Way: QQuickImageProvider"
 
     menuBar: MenuBar {
         Menu {
             id: loadMenu
-            title: qsTr("Renderer")
+            title: qsTr("Rendering Ways")
             Repeater {
-                model: ["ImageProvider", "QuickPaintedItem", "VideoOutput", qsTr("Close")]
+                model: ["QQuickImageProvider", "QQuickPaintedItem", "VideoOutput", qsTr("Close")]
                 MenuItem {
                     text: modelData
                     onClicked: {
@@ -28,7 +28,7 @@ ApplicationWindow {
                             windowContentLoader.source = ""
                         }
 
-                        root.title = qsTr("Current renderer: ") + modelData
+                        root.title = qsTr("Current Rendering Way: ") + modelData
                     }
                 }
             }
