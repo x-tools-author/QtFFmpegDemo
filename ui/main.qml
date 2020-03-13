@@ -12,7 +12,7 @@ ApplicationWindow {
     menuBar: MenuBar {
         Menu {
             id: loadMenu
-            title: qsTr("显示方式")
+            title: qsTr("输出")
             Repeater {
                 model: [qsTr("ImageProvider"), qsTr("QuickPaintedItem"), qsTr("VideoOutput"), qsTr("Close")]
                 MenuItem {
