@@ -14,7 +14,7 @@ ApplicationWindow {
             id: loadMenu
             title: qsTr("显示方式")
             Repeater {
-                model: [qsTr("ImageProvider"), qsTr("QuickPaintedItem"), qsTr("VideoOutput")]
+                model: [qsTr("ImageProvider"), qsTr("QuickPaintedItem"), qsTr("VideoOutput"), qsTr("Close")]
                 MenuItem {
                     text: modelData
                     onClicked: {
@@ -24,6 +24,8 @@ ApplicationWindow {
                             windowContentLoader.source = "qrc:/ui/QuickPaintedItem.qml"
                         }else if (index == 2){
                             windowContentLoader.source = "qrc:/ui/CustomVideoOutput.qml"
+                        }else if (index == 3){
+                            windowContentLoader.source = ""
                         }
 
                         root.title = modelData
@@ -31,6 +33,12 @@ ApplicationWindow {
                 }
             }
         }
+    }
+
+    Image {
+        source: "qrc:/resources/F.png"
+        anchors.centerIn: parent
+        fillMode: Image.PreserveAspectFit
     }
 
     Loader {
